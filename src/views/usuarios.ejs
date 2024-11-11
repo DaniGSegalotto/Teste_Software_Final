@@ -6,157 +6,168 @@
     <style>
         /* Estilos globais para o corpo da página */
         body {
-            font-family: Arial, sans-serif; /* Define a fonte da página */
-            max-width: 800px; /* Limita a largura máxima da página */
-            margin: 0 auto; /* Centraliza a página */
-            padding: 20px; /* Adiciona espaçamento interno */
-            background-color: #f8f9fa; /* Define a cor de fundo */
+            font-family: 'Courier New', monospace; /* Fonte estilo terminal */
+            background: linear-gradient(135deg, #1a1a1a, #333333); /* Fundo gradiente escuro */
+            color: #e6e6e6; /* Texto claro */
+            max-width: 800px; /* Largura máxima */
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Estilos para lista de usuários e layout */
+        /* Estilos para a lista de usuários */
         ul {
-            list-style-type: none; /* Remove os marcadores da lista */
-            padding: 0; /* Remove o preenchimento padrão */
+            list-style-type: none; /* Remove marcadores */
+            padding: 0;
         }
         li {
-            margin: 10px 0; /* Espaçamento entre os itens da lista */
-            padding: 10px; /* Preenchimento interno dos itens */
-            background-color: #ffffff; /* Cor de fundo dos itens */
-            border-radius: 5px; /* Bordas arredondadas */
-            display: flex; /* Usa flexbox para layout */
-            justify-content: space-between; /* Espaça os itens do li */
-            align-items: center; /* Centraliza verticalmente */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #333333; /* Fundo escuro */
+            color: #ffa500; /* Texto laranja */
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3); /* Sombra laranja */
         }
+
         button {
-            padding: 10px 20px; /* Preenchimento interno dos botões */
-            border: none; /* Remove borda padrão */
-            border-radius: 5px; /* Bordas arredondadas */
-            cursor: pointer; /* Muda o cursor ao passar o mouse */
-            font-size: 16px; /* Tamanho da fonte dos botões */
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+            color: #ffffff;
         }
         button.excluir {
-            background-color: #dc3545; /* Cor de fundo para o botão de excluir */
-            color: white; /* Cor do texto */
+            background: linear-gradient(45deg, #8b0000, #ff4500); /* Gradiente vermelho */
         }
         button.excluir:hover {
-            background-color: #c82333; /* Cor ao passar o mouse */
+            background: linear-gradient(45deg, #ff4500, #8b0000);
+            transform: scale(1.05); /* Efeito hover */
         }
         button.editar {
-            background-color: #ffa600; /* Cor de fundo para o botão de editar */
-            color: white; /* Cor do texto */
-            margin-left: 10px; /* Espaçamento à esquerda */
+            background: linear-gradient(45deg, #ffa600, #ff8800); /* Gradiente laranja */
+            margin-left: 10px;
         }
         button.editar:hover {
-            background-color: #ff8800; /* Cor ao passar o mouse */
+            background: linear-gradient(45deg, #ff8800, #ffa600);
+            transform: scale(1.05);
         }
         button.voltar {
-            background-color: #007bff; /* Cor de fundo para o botão de voltar */
-            color: white; /* Cor do texto */
-            margin-top: 20px; /* Espaçamento superior */
+            background: linear-gradient(45deg, #0069d9, #007bff); /* Gradiente azul */
+            color: #ffffff;
+            margin-top: 20px;
+            width: 100%;
         }
         button.voltar:hover {
-            background-color: #0069d9; /* Cor ao passar o mouse */
+            background: linear-gradient(45deg, #007bff, #0069d9);
+            transform: scale(1.05);
         }
 
         /* Estilos para o modal de confirmação */
         .modal-overlay {
-            position: fixed; /* Fixa o modal na tela */
-            top: 0; /* Alinha ao topo */
-            left: 0; /* Alinha à esquerda */
-            width: 100%; /* Largura total da tela */
-            height: 100%; /* Altura total da tela */
-            background: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
-            display: none; /* Inicialmente oculto */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
         }
         .modal {
-            background: white; /* Cor de fundo do modal */
-            padding: 20px; /* Preenchimento interno */
-            border-radius: 8px; /* Bordas arredondadas */
-            max-width: 400px; /* Largura máxima do modal */
-            text-align: center; /* Centraliza texto */
+            background: #222;
+            color: #ffa500;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 165, 0, 0.4);
         }
         .modal button {
-            margin: 10px 5px; /* Margem dos botões no modal */
-            padding: 10px 20px; /* Preenchimento interno dos botões */
-            font-size: 16px; /* Tamanho da fonte */
-            border-radius: 5px; /* Bordas arredondadas */
+            margin: 10px 5px;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
         }
         .modal button.confirmar {
-            background-color: #28a745; /* Cor de fundo para o botão confirmar */
-            color: white; /* Cor do texto */
+            background-color: #228B22;
+            color: #ffffff;
         }
         .modal button.confirmar:hover {
-            background-color: #218838; /* Cor ao passar o mouse */
+            background-color: #218838;
         }
         .modal button.cancelar {
-            background-color: #dc3545; /* Cor de fundo para o botão cancelar */
-            color: white; /* Cor do texto */
+            background-color: #8b0000;
+            color: #ffffff;
         }
         .modal button.cancelar:hover {
-            background-color: #c82333; /* Cor ao passar o mouse */
+            background-color: #ff4500;
         }
 
         /* Estilos para o alerta */
         .alert {
-            position: fixed; /* Fixa o alerta na tela */
-            top: 20px; /* Distância do topo */
-            left: 50%; /* Centraliza horizontalmente */
-            transform: translateX(-50%); /* Ajusta para centralizar */
-            background-color: #28a745; /* Cor de fundo do alerta */
-            color: white; /* Cor do texto */
-            padding: 15px; /* Preenchimento interno */
-            border-radius: 5px; /* Bordas arredondadas */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            display: none; /* Inicialmente oculto */
-            opacity: 0; /* Transparente inicialmente */
-            transition: opacity 0.5s ease; /* Transição suave */
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         /* Estilos para o formulário de edição */
         .form-edicao {
-            display: none; /* Inicialmente oculto */
-            margin-top: 20px; /* Espaçamento superior */
-            padding: 20px; /* Preenchimento interno */
-            border: 1px solid #ced4da; /* Borda do formulário */
-            border-radius: 5px; /* Bordas arredondadas */
-            background-color: #ffffff; /* Cor de fundo */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            max-width: 100%; /* Largura máxima */
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed #ffa500;
+            border-radius: 8px;
+            background-color: #333333;
+            box-shadow: 0 2px 10px rgba(255, 165, 0, 0.3);
         }
         .form-edicao label {
-            display: block; /* Exibe cada label em uma nova linha */
-            margin-top: 10px; /* Margem superior */
+            display: block;
+            color: #e6e6e6;
+            margin-top: 10px;
         }
         .form-edicao input {
-            width: 100%; /* Largura total do input */
-            margin: 10px 0; /* Margens superior e inferior */
-            padding: 10px; /* Preenchimento interno */
-            border-radius: 5px; /* Bordas arredondadas */
-            border: 1px solid #ced4da; /* Borda do input */
-            box-sizing: border-box; /* Inclui bordas e preenchimento na largura */
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ffa500;
+            background-color: #444444;
+            color: #ffffff;
+            font-size: 1rem;
         }
         .form-edicao button {
-            width: 48%; /* Largura dos botões do formulário */
-            margin-top: 10px; /* Margem superior */
-            padding: 10px; /* Preenchimento interno */
-            font-size: 16px; /* Tamanho da fonte */
+            width: 48%;
+            margin-top: 10px;
+            padding: 12px;
+            font-size: 1rem;
         }
         .form-edicao button.salvar {
-            background-color: #28a745; /* Cor de fundo para o botão salvar */
-            color: white; /* Cor do texto */
+            background-color: #228B22;
+            color: #ffffff;
         }
         .form-edicao button.salvar:hover {
-            background-color: #218838; /* Cor ao passar o mouse */
+            background-color: #218838;
         }
         .form-edicao button.cancelar {
-            background-color: #dc3545; /* Cor de fundo para o botão cancelar */
-            color: white; /* Cor do texto */
+            background-color: #8b0000;
+            color: #ffffff;
         }
         .form-edicao button.cancelar:hover {
-            background-color: #c82333; /* Cor ao passar o mouse */
+            background-color: #ff4500;
         }
     </style>
 </head>
@@ -167,8 +178,8 @@
             <li id="usuario-<%= usuario.id %>">
                 <span>Nome: <%= usuario.nome %> | Email: <%= usuario.email %></span>
                 <div>
-                    <button class="editar" onclick="abrirFormularioEdicao(<%= usuario.id %>, '<%= usuario.nome %>', '<%= usuario.email %>')">Editar</button>
-                    <button class="excluir" onclick="confirmarExclusao(<%= usuario.id %>)">Excluir</button>
+                    <button class="editar" onclick="abrirFormularioEdicao('<%= usuario.id %>', '<%= usuario.nome %>', '<%= usuario.email %>')">Editar</button>
+                    <button class="excluir" onclick="confirmarExclusao('<%= usuario.id %>')">Excluir</button>
                 </div>
             </li>
         <% }) %>

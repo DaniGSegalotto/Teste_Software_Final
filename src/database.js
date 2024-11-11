@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
   port: 5432, // Porta padrão do PostgreSQL
   database: 'meu_projeto', // Nome do banco de dados ao qual a aplicação irá se conectar
   username: 'postgres', // Nome de usuário para autenticação no banco de dados
-  password: 'postgres', // Senha para autenticação no banco de dados
+  password: '123', // Senha para autenticação no banco de dados
 });
 
 // Exporta a instância do Sequelize para que possa ser utilizada em outros arquivos da aplicação

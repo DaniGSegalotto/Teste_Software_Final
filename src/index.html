@@ -6,97 +6,103 @@
     <title>Teste de Sistema</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Define a fonte utilizada na página */
-            background-color: #f0f0f0; /* Cor de fundo da página */
-            margin: 0; /* Remove margens padrão do body */
-            padding: 20px; /* Adiciona um espaçamento interno */
+            font-family: 'Courier New', monospace; /* Altera a fonte para uma aparência de terminal */
+            background: linear-gradient(135deg, #1a1a1a, #333333); /* Fundo com gradiente escuro */
+            color: #e6e6e6; /* Cor clara para o texto */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-    
+
         h1 {
-            color: #333; /* Cor do título */
-            text-align: center; /* Centraliza o título */
+            color: #ffa500; /* Título em laranja brilhante */
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
-    
+
         form {
-            background-color: #fff; /* Cor de fundo do formulário */
-            padding: 20px; /* Adiciona espaçamento interno ao formulário */
-            border-radius: 5px; /* Arredonda os cantos do formulário */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ao formulário */
-            max-width: 400px; /* Largura máxima do formulário */
-            margin: auto; /* Centraliza o formulário na página */
+            background: rgba(50, 50, 50, 0.8); /* Fundo semi-transparente para o formulário */
+            padding: 25px;
+            border: 2px dashed #ff6347; /* Borda tracejada em tom laranja */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(255, 165, 0, 0.2); /* Sombra brilhante */
+            width: 80%;
+            max-width: 500px;
+            margin: auto;
         }
-    
+
         input[type="text"],
         input[type="email"] {
-            width: calc(100% - 20px); /* Largura dos campos de entrada */
-            padding: 10px; /* Adiciona espaçamento interno aos campos */
-            margin: 10px auto; /* Margem vertical aos campos */
-            border: 1px solid #ccc; /* Borda dos campos */
-            border-radius: 5px; /* Arredonda os cantos dos campos */
-            display: block; /* Garante que os campos sejam exibidos em bloco */
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ffa500; /* Borda laranja */
+            border-radius: 8px;
+            background-color: #444444; /* Fundo escuro para os campos */
+            color: #ffffff; /* Texto claro */
+            font-size: 1rem;
         }
-    
+
         .button-container {
-            display: flex; /* Utiliza flexbox para o layout dos botões */
-            flex-direction: column; /* Direção dos itens como coluna */
-            gap: 10px; /* Espaçamento entre os botões */
+            display: flex;
+            justify-content: space-between; /* Botões lado a lado */
+            gap: 10px;
         }
-    
+
         button {
-            background-color: #28a745; /* Cor de fundo do botão padrão */
-            color: white; /* Cor do texto do botão */
-            padding: 10px; /* Espaçamento interno ao botão */
-            border: none; /* Remove a borda padrão */
-            border-radius: 5px; /* Arredonda os cantos do botão */
-            cursor: pointer; /* Muda o cursor para indicar que é clicável */
-            width: 100%; /* Largura do botão como 100% */
+            background: linear-gradient(45deg, #ff4500, #ff6347); /* Gradiente de laranja */
+            color: #ffffff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            transition: transform 0.2s; /* Animação ao passar o mouse */
         }
-    
+
         button:hover {
-            background-color: #218838; /* Cor do botão ao passar o mouse */
+            transform: scale(1.05); /* Aumenta o botão levemente */
+            background: linear-gradient(45deg, #ff6347, #ff4500); /* Inverte o gradiente */
         }
-    
-        /* Estilo específico para o botão "Ver Usuários" em azul */
-        .button-container button:last-child {
-            background-color: #007bff; /* Cor de fundo do botão "Ver Usuários" */
-        }
-    
-        .button-container button:last-child:hover {
-            background-color: #0069d9; /* Cor do botão "Ver Usuários" ao passar o mouse */
-        }
-    
+
         ul {
-            list-style-type: none; /* Remove as bolinhas da lista */
-            padding: 0; /* Remove o padding padrão */
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
         }
-    
+
         li {
-            background-color: #fff; /* Cor de fundo dos itens da lista */
-            margin: 5px 0; /* Margem vertical aos itens */
-            padding: 10px; /* Espaçamento interno aos itens */
-            border-radius: 5px; /* Arredonda os cantos dos itens */
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Sombra aos itens */
+            background-color: #333333;
+            color: #ffa500;
+            margin: 8px 0;
+            padding: 12px;
+            border-left: 4px solid #ffa500;
+            border-radius: 6px;
+            font-size: 0.9rem;
         }
-    
-        /* Estilo para mensagens de alerta */
+
         .alert {
-            text-align: center; /* Centraliza o texto do alerta */
-            margin-top: 10px; /* Margem acima do alerta */
-            padding: 10px; /* Espaçamento interno ao alerta */
-            border-radius: 5px; /* Arredonda os cantos do alerta */
-            display: none; /* Esconde o alerta por padrão */
+            text-align: center;
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
         }
-    
+
         .alert.success {
-            background-color: #d4edda; /* Cor de fundo para alertas de sucesso */
-            color: #155724; /* Cor do texto para alertas de sucesso */
-            border: 1px solid #c3e6cb; /* Borda para alertas de sucesso */
+            background-color: #228B22; /* Fundo verde para sucesso */
+            color: #ffffff;
         }
-    
+
         .alert.error {
-            background-color: #f8d7da; /* Cor de fundo para alertas de erro */
-            color: #721c24; /* Cor do texto para alertas de erro */
-            border: 1px solid #f5c6cb; /* Borda para alertas de erro */
+            background-color: #8b0000; /* Fundo vermelho para erro */
+            color: #ffffff;
         }
     </style>
 </head>
